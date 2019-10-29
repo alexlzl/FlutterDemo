@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-
-/*
-
- */
-void main() {
+void main(){
   runApp(new MaterialApp(
     home: new Scaffold(
       body: new PlatformTestBody(),
@@ -19,8 +15,8 @@ class PlatformTestBody extends StatefulWidget {
 }
 
 class PlatformTestBodyState extends State<PlatformTestBody> {
+  String nativeMessage = '';
 
-  String nativeMessage ='';
   @override
   Widget build(BuildContext context) {
     return new Container(
