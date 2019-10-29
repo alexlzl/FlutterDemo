@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 void main(){
   runApp(new MaterialApp(
     home: new Scaffold(
@@ -15,7 +16,10 @@ class PlatformTestBody extends StatefulWidget {
 }
 
 class PlatformTestBodyState extends State<PlatformTestBody> {
-  String nativeMessage = '';
+  //Add this line
+  static const platformMethodChannel = const MethodChannel('com.test/test');
+
+  String nativeMessage ='';
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +42,7 @@ class PlatformTestBodyState extends State<PlatformTestBody> {
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 102.0),
             child: new RaisedButton(
               child: new Text('Click Me'),
-              onPressed: () => print(''),
+              onPressed: () =>doNativeSuff(),
             ),
           ),
           new Padding(
@@ -55,4 +59,23 @@ class PlatformTestBodyState extends State<PlatformTestBody> {
       ),
     );
   }
+
+  Future<Null> doNativeSuff() async {
+    String _message; // 1
+    try {
+      print("start========");
+      final String result =
+      await platformMethodChannel.invokeMethod('changeLife');// 2
+      _message = result;
+      print(result);
+    } on PlatformException catch (e) {
+      _message = "Sadly I can not change your life: ${e.message}.";
+    }
+    setState(() {
+      nativeMessage = _message; // 3
+    });
+  }
 }
+
+
+
