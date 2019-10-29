@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-void main(){
+
+/*
+https://juejin.im/post/5b35a75e51882574ea3a25e3
+与本地代码交互
+ */
+void main() {
   runApp(new MaterialApp(
     home: new Scaffold(
       body: new PlatformTestBody(),
@@ -19,7 +24,7 @@ class PlatformTestBodyState extends State<PlatformTestBody> {
   //Add this line
   static const platformMethodChannel = const MethodChannel('com.test/test');
 
-  String nativeMessage ='';
+  String nativeMessage = '';
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +47,7 @@ class PlatformTestBodyState extends State<PlatformTestBody> {
             padding: const EdgeInsets.only(left: 8.0, right: 8.0, top: 102.0),
             child: new RaisedButton(
               child: new Text('Click Me'),
-              onPressed: () =>doNativeSuff(),
+              onPressed: () => doNativeSuff(),
             ),
           ),
           new Padding(
@@ -65,7 +70,7 @@ class PlatformTestBodyState extends State<PlatformTestBody> {
     try {
       print("start========");
       final String result =
-      await platformMethodChannel.invokeMethod('changeLife');// 2
+          await platformMethodChannel.invokeMethod('changeLife'); // 2
       _message = result;
       print(result);
     } on PlatformException catch (e) {
@@ -76,6 +81,3 @@ class PlatformTestBodyState extends State<PlatformTestBody> {
     });
   }
 }
-
-
-
