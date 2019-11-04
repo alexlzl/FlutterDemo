@@ -49,13 +49,13 @@ class MyPainter extends CustomPainter {
     var paint = Paint()
       ..isAntiAlias = true
       ..style = PaintingStyle.fill //填充
-      ..color = Color(0x77cdb175); //背景为纸黄色
+      ..color = Colors.green; //背景色
     canvas.drawRect(Offset.zero & size, paint);
 
     //画棋盘网格
     paint
       ..style = PaintingStyle.stroke //线
-      ..color = Colors.black87
+      ..color = Colors.red
       ..strokeWidth = 1.0;
 
     for (int i = 0; i <= 15; ++i) {
