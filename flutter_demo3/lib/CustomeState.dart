@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '自定义widget.dart';
+
 void main() => runApp(MyApp());
+
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
@@ -42,6 +44,7 @@ class MyHomePage extends StatefulWidget {
   @override
   HomePageState createState() => HomePageState();
 }
+
 class HomePageState extends State<MyHomePage> {
   List<BaseData> data = List();
 
