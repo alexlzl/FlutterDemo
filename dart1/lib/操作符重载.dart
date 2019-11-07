@@ -1,3 +1,7 @@
+
+/*
+https://www.jianshu.com/p/d7b7e490a5ad
+ */
 class Role {
   final String name;
   final int _accessLevel;
